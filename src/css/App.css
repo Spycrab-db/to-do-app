@@ -2,3 +2,10 @@ body{
     background-color: #292929;
     color: #EAEAEA;
 }
+#root{
+    display: flex;
+    gap: 4rem;
+}
+.todo-ui{
+    flex: 1;
+}
