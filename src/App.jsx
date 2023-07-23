@@ -32,7 +32,7 @@ export default function App() {
     //Deletes a list by id, also deletes associated tasks and currList
     function deleteList(id) {
         if (id === currListId) {
-            setCurrListId();
+            setCurrListId(undefined);
         }
         setTodoLists(todoLists.filter((list) => list.id !== id));
         setTasks(tasks.filter((task) => task.parentList !== id));
@@ -50,6 +50,10 @@ export default function App() {
             }
             return task;
         }));
+    }
+    //Deletes a task by id
+    function deleteTask(id){
+        setTasks(tasks.filter((task)=>task.id !== id))
     }
     return (
         <>
@@ -88,6 +92,7 @@ export default function App() {
                     addTask={(task) => setTasks([...tasks, task])}
                     allTasks={tasks}
                     toggleComplete={toggleComplete}
+                    deleteTask={deleteTask}
                 />
             }
         </>

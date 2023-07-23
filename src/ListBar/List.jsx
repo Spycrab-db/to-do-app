@@ -4,48 +4,51 @@ export default function List({ children, setTitle, setToCurrList, onEdit, setEdi
     const [inputTitle, setInputTitle] = useState("");
     return (
         <li>
-            <button onDoubleClick={() => setEdit(true)} onClick={() => {
-                if (!onEdit) {
+            {onEdit ? (
+                <form onSubmit={(evt) => {
+                    evt.preventDefault();
+                    setTitle(evt.target.elements['title'].value);
+                    setEdit(false);
                     setToCurrList();
-                }
-            }}>
-                {onEdit ? (
-                    <form onSubmit={(evt) => {
-                        evt.preventDefault();
-                        setTitle(evt.target.elements['title'].value);
-                        setEdit(false);
-                        setToCurrList();
-                    }}>
-                        <input
-                            required
-                            type="text"
-                            name="title"
-                            value={inputTitle}
-                            placeholder="New List"
-                            autoFocus
-                            onBlur={(evt) => {
-                                setTitle(evt.target.value);
-                                setEdit(false);
-                            }}
-                            onKeyDown={(evt) => {
-                                if (evt.key === 'Escape') {
-                                    if (children) {
-                                        setInputTitle(children);
-                                        setEdit(false);
-                                    } else{
-                                        deleteSelf();
-                                    }
-
+                }}>
+                    <input
+                        required
+                        type="text"
+                        name="title"
+                        value={inputTitle}
+                        placeholder="New List"
+                        autoFocus
+                        onBlur={(evt) => {
+                            setTitle(evt.target.value);
+                            setEdit(false);
+                        }}
+                        onKeyDown={(evt) => {
+                            if (evt.key === 'Escape') {
+                                if (children) {
+                                    setInputTitle(children);
+                                    setEdit(false);
+                                } else {
+                                    deleteSelf();
                                 }
-                            }}
-                            onChange={(evt) => {
-                                setInputTitle(evt.target.value);
-                            }} />
-                    </form>
-                ) : children
-                }
-            </button>
-            <button onClick={deleteSelf}>X</button>
+
+                            }
+                        }}
+                        onChange={(evt) => {
+                            setInputTitle(evt.target.value);
+                        }} />
+                </form>
+            ) : (
+                <div onClick={setToCurrList} onDoubleClick={() => setEdit(true)}>
+                    {children}
+                    <button onClick={(evt)=>{
+                        evt.stopPropagation();
+                        deleteSelf();
+                    }}>
+                        X
+                    </button>
+                </div>
+            )
+            }
         </li>
     )
 }

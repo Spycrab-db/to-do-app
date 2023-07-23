@@ -1,10 +1,13 @@
-export default function Task({ task, toggleComplete }) {
+export default function Task({ task, toggleComplete, deleteSelf }) {
     return (
         <li>
-            <button onClick={()=>toggleComplete(task.id)}>
-                ✔
-            </button>
-            {task.title}
+            <div onClick={()=>toggleComplete(task.id)}>
+                {task.title}
+                <button onClick={(evt)=>{
+                    evt.stopPropagation();
+                    deleteSelf();
+                }}>X</button>
+            </div>
         </li>
     )
 }

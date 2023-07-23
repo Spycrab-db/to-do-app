@@ -11,7 +11,10 @@ export default function NewTask({ addTask, currList }) {
     }
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" htmlFor="newTask" value={inputTitle} onChange={(evt) => {
+            <input type="text" htmlFor="newTask"
+            required
+            value={inputTitle}
+            onChange={(evt) => {
                 setInputTitle(evt.target.value);
             }} />
         </form>

@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function CompletedDropdown({ tasks, undo }) {
+export default function CompletedDropdown({ tasks, undo, deleteTask }) {
     const [showTasks, setShowTasks] = useState(false);
     return (
         <>
@@ -12,8 +12,14 @@ export default function CompletedDropdown({ tasks, undo }) {
                     {tasks.map((task) => {
                         return (
                             <li key={task.id}>
-                                {task.title}
-                                <button onClick={() => undo(task.id)}>Undo</button>
+                                <div onClick={() => undo(task.id)}>
+                                    {task.title}
+                                    <button onClick={(evt) => {
+                                        evt.stopPropagation();
+                                        deleteTask(task.id)
+                                    }}>X
+                                    </button>
+                                </div>
                             </li>
                         )
                     })}
