@@ -2,38 +2,47 @@ import { useState } from "react"
 
 export default function List({ children, setTitle, takenTitles, setToCurrList, onEdit, setEdit, deleteSelf }) {
     const [inputTitle, setInputTitle] = useState("");
-    const [error, setError] = useState(false);
+    const [error, setError] = useState();
+    function submitTitle() {
+        if (!inputTitle) {
+            if (children) {
+                setError();
+                setTitle(children);
+                setInputTitle(children);
+                setEdit(false);
+                setToCurrList();
+            } else deleteSelf();
+        }
+        else if (takenTitles.includes(inputTitle) && inputTitle !== children) {
+            setError("Title is already taken");
+        }
+        else {
+            setError();
+            setTitle(inputTitle);
+            setEdit(false);
+            setToCurrList();
+        }
+    }
     if (onEdit) {
         return (
             <li>
                 <form onSubmit={(evt) => {
                     evt.preventDefault();
-                    if (takenTitles.includes(inputTitle) && inputTitle !== children) {
-                        setError(true);
-                    } else {
-                        setError(false);
-                        setTitle(inputTitle);
-                        setEdit(false);
-                        setToCurrList();
-                    }
+                    submitTitle();
                 }}>
                     <input
-                        required
                         type="text"
                         name="title"
                         value={inputTitle}
                         placeholder="New List"
                         autoFocus
-                        onBlur={(evt) => {
-                            setTitle(evt.target.value);
-                            setEdit(false);
-                        }}
+                        onBlur={submitTitle}
                         onKeyDown={(evt) => {
                             if (evt.key === 'Escape') {
                                 if (children) {
                                     setInputTitle(children);
                                     setEdit(false);
-                                    setError(false);
+                                    setError();
                                 } else {
                                     deleteSelf();
                                 }
@@ -44,9 +53,14 @@ export default function List({ children, setTitle, takenTitles, setToCurrList, o
                         }} />
                 </form>
                 {error && (
+                    <>
                     <div>
-                        Title is already taken
+                        {error}
                     </div>
+                    <div>
+                        Esc to cancel
+                    </div>
+                    </>
                 )}
             </li>
         )

@@ -8,22 +8,27 @@ export default function CompletedDropdown({ tasks, undo, deleteTask }) {
                 Completed Tasks
             </button>
             {showTasks && (
-                <ul className="completed-tasks">
-                    {tasks.map((task) => {
-                        return (
-                            <li key={task.id}>
-                                <div onClick={() => undo(task.id)}>
-                                    {task.title}
-                                    <button onClick={(evt) => {
-                                        evt.stopPropagation();
-                                        deleteTask(task.id)
-                                    }}>X
-                                    </button>
-                                </div>
-                            </li>
-                        )
-                    })}
-                </ul>
+                <div>
+                    <button onClick={() => deleteTask(tasks)}>
+                        Clear
+                    </button>
+                    <ul className="completed-tasks">
+                        {tasks.map((task) => {
+                            return (
+                                <li key={task.id}>
+                                    <div onClick={() => undo(task.id)}>
+                                        {task.title}
+                                        <button onClick={(evt) => {
+                                            evt.stopPropagation();
+                                            deleteTask(task)
+                                        }}>X
+                                        </button>
+                                    </div>
+                                </li>
+                            )
+                        })}
+                    </ul>
+                </div>
             )}
         </>
     )

@@ -4,10 +4,8 @@ import TodosUI from './TodosUI/TodosUI';
 import TaskList from './Classes/TaskList';
 import { useState } from 'react';
 
-// Prevent duplicate list names
-// Delete lists
-// Delete tasks
 // Styling
+// Connect to localStorage
 
 export default function App() {
     //Defines all the todo lists
@@ -50,19 +48,25 @@ export default function App() {
             return task;
         }));
     }
-    //Deletes a task by id
-    function deleteTask(id){
-        setTasks(tasks.filter((task)=>task.id !== id))
+    //Deletes a task or an array of tasks
+    function deleteTask(tasksToDelete) {
+        if (!Array.isArray(tasksToDelete)){
+            tasksToDelete = [tasksToDelete];
+        }
+        setTasks(tasks.filter((task) => !tasksToDelete.includes(task)));
     }
     return (
         <>
             <div className="side-bar">
                 <button className="new-list" onClick={() => {
-                    const newTaskList = new TaskList();
-                    setTodoLists((oldTaskLists) => {
-                        return [...oldTaskLists, newTaskList]
-                    });
-                    setCurrEdit(newTaskList.id);
+                    // Only add a new list if all lists are named
+                    if (todoLists.map((list) => list.title).every(Boolean)) {
+                        const newTaskList = new TaskList();
+                        setTodoLists((oldTaskLists) => {
+                            return [...oldTaskLists, newTaskList]
+                        });
+                        setCurrEdit(newTaskList.id);
+                    }
                 }}>
                     + New List
                 </button>
@@ -71,7 +75,7 @@ export default function App() {
                         return (
                             <List
                                 setTitle={(newTitle) => setTitle(list.id, newTitle)}
-                                takenTitles={todoLists.map((list)=>list.title)}
+                                takenTitles={todoLists.map((list) => list.title)}
                                 setToCurrList={() => changeCurrList(list.id)} key={list.id}
                                 onEdit={list.id === currEdit}
                                 setEdit={(active) => {

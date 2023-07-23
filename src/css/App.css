@@ -1,10 +1,14 @@
 body{
     background-color: #292929;
     color: #EAEAEA;
+    font-family: 'Roboto', sans-serif;
 }
 #root{
     display: flex;
     gap: 4rem;
+}
+.side-bar{
+    width: 20%;
 }
 .todo-ui{
     flex: 1;

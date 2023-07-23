@@ -14,7 +14,7 @@ export default function TodosUI({ currList, allTasks, addTask, toggleComplete, d
                         task={task}
                         key={task.id}
                         toggleComplete={toggleComplete}
-                        deleteSelf={() => deleteTask(task.id)} />
+                        deleteSelf={() => deleteTask(task)} />
                 })}
             </ul>
             <h2>Add a Task:</h2>
