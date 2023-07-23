@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function List({ children, setTitle, setToCurrList, onEdit, setEdit}) {
+export default function List({ children, setTitle, setToCurrList, onEdit, setEdit }) {
     const [inputTitle, setInputTitle] = useState("");
     return (
         <li>
@@ -15,7 +15,22 @@ export default function List({ children, setTitle, setToCurrList, onEdit, setEdi
                         setTitle(evt.target.elements['title'].value);
                         setEdit(false);
                     }}>
-                        <input type="text" name="title" value={inputTitle} placeholder="New List"
+                        <input
+                            type="text"
+                            name="title"
+                            value={inputTitle}
+                            placeholder="New List"
+                            autoFocus
+                            onBlur={(evt) => {
+                                setTitle(evt.target.value);
+                                setEdit(false);
+                            }}
+                            onKeyDown={(evt)=>{
+                                if (evt.key === 'Escape'){
+                                    setInputTitle(children);
+                                    setEdit(false);
+                                }
+                            }}
                             onChange={(evt) => {
                                 setInputTitle(evt.target.value);
                             }} />

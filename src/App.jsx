@@ -4,7 +4,6 @@ import TodosUI from './TodosUI/TodosUI';
 import TaskList from './Classes/TaskList';
 import { useState } from 'react';
 
-// Automatically focus on edit after adding or double clicking a list
 // Change currList to the newly added list after naming it
 // Add a dropdown menu for completed tasks
 // Styling
