@@ -1,11 +1,10 @@
 import { useState } from "react"
 
-export default function List({ children, setTitle, setToCurrList }) {
-    const [onEdit, setOnEdit] = useState(true);
+export default function List({ children, setTitle, setToCurrList, onEdit, setEdit}) {
     const [inputTitle, setInputTitle] = useState("");
     return (
         <li>
-            <button onDoubleClick={() => setOnEdit(true)} onClick={() => {
+            <button onDoubleClick={() => setEdit(true)} onClick={() => {
                 if (!onEdit) {
                     setToCurrList();
                 }
@@ -14,7 +13,7 @@ export default function List({ children, setTitle, setToCurrList }) {
                     <form onSubmit={(evt) => {
                         evt.preventDefault();
                         setTitle(evt.target.elements['title'].value);
-                        setOnEdit(false);
+                        setEdit(false);
                     }}>
                         <input type="text" name="title" value={inputTitle} placeholder="New List"
                             onChange={(evt) => {

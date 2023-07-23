@@ -4,14 +4,16 @@ import TodosUI from './TodosUI/TodosUI';
 import TaskList from './Classes/TaskList';
 import { useState } from 'react';
 
-// Move onEdit state here to only allow one edit at a time (maybe create a sidebar Component)
 // Automatically focus on edit after adding or double clicking a list
+// Change currList to the newly added list after naming it
 // Add a dropdown menu for completed tasks
 // Styling
 
 export default function App() {
     //Defines all the todo lists
     const [todoLists, setTodoLists] = useState([]);
+    //Defines the id of the list that is onEdit
+    const [currEdit, setCurrEdit] = useState();
     //Defines all the tasks
     const [tasks, setTasks] = useState([]);
     //Defines the index of the active list
@@ -44,9 +46,11 @@ export default function App() {
         <>
             <div className="side-bar">
                 <button className="new-list" onClick={() => {
+                    const newTaskList = new TaskList();
                     setTodoLists((oldTaskLists) => {
-                        return [...oldTaskLists, new TaskList()]
+                        return [...oldTaskLists, newTaskList]
                     });
+                    setCurrEdit(newTaskList.id);
                 }}>
                     + New List
                 </button>
@@ -56,6 +60,11 @@ export default function App() {
                             <List
                             setTitle={(newTitle)=>setTitle(list.id, newTitle)}
                             setToCurrList={()=>changeCurrList(list.id)} key={list.id}
+                            onEdit={list.id === currEdit}
+                            setEdit={(active)=>{
+                                if (active) setCurrEdit(list.id)
+                                else setCurrEdit(false)
+                            }}
                             >
                                 {list.title}
                             </List>
