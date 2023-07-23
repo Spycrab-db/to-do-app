@@ -16,6 +16,10 @@ button{
     color: white;
     background: none;
 }
+input{
+    all: unset;
+    border: solid rgb(188, 188, 188);
+}
 .side-bar{
     width: 20%;
 }

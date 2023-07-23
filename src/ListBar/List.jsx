@@ -35,6 +35,7 @@ export default function List({ children, setTitle, takenTitles, setToCurrList, o
                     <input
                         type="text"
                         name="title"
+                        className="input-list"
                         value={inputTitle}
                         placeholder="New List"
                         autoFocus
