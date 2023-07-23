@@ -1,0 +1,19 @@
+.todo-ui {
+    animation: fade-in .3s;
+    transition: all .2;
+}
+
+.list-title {
+    font-weight: normal;
+    font-size: 3.3rem;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
