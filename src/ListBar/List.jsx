@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-export default function List({ children, setTitle, setToCurrList, onEdit, setEdit }) {
+export default function List({ children, setTitle, setToCurrList, onEdit, setEdit, deleteSelf }) {
     const [inputTitle, setInputTitle] = useState("");
     return (
         <li>
@@ -17,6 +17,7 @@ export default function List({ children, setTitle, setToCurrList, onEdit, setEdi
                         setToCurrList();
                     }}>
                         <input
+                            required
                             type="text"
                             name="title"
                             value={inputTitle}
@@ -26,10 +27,15 @@ export default function List({ children, setTitle, setToCurrList, onEdit, setEdi
                                 setTitle(evt.target.value);
                                 setEdit(false);
                             }}
-                            onKeyDown={(evt)=>{
-                                if (evt.key === 'Escape'){
-                                    setInputTitle(children);
-                                    setEdit(false);
+                            onKeyDown={(evt) => {
+                                if (evt.key === 'Escape') {
+                                    if (children) {
+                                        setInputTitle(children);
+                                        setEdit(false);
+                                    } else{
+                                        deleteSelf();
+                                    }
+
                                 }
                             }}
                             onChange={(evt) => {
@@ -39,6 +45,7 @@ export default function List({ children, setTitle, setToCurrList, onEdit, setEdi
                 ) : children
                 }
             </button>
+            <button onClick={deleteSelf}>X</button>
         </li>
     )
 }

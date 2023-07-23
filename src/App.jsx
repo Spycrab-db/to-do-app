@@ -4,6 +4,10 @@ import TodosUI from './TodosUI/TodosUI';
 import TaskList from './Classes/TaskList';
 import { useState } from 'react';
 
+// Prevent nameless list titles and tasks
+// Prevent duplicate list names
+// Delete lists
+// Delete tasks
 // Styling
 
 export default function App() {
@@ -13,8 +17,8 @@ export default function App() {
     const [currEdit, setCurrEdit] = useState();
     //Defines all the tasks
     const [tasks, setTasks] = useState([]);
-    //Defines the index of the active list
-    const [currList, setCurrList] = useState();
+    //Defines the id of the current list
+    const [currListId, setCurrListId] = useState();
 
     //Changes the title of a list by id and updates the state
     function setTitle(listId, newTitle) {
@@ -25,16 +29,24 @@ export default function App() {
             return list;
         }));
     }
+    //Deletes a list by id, also deletes associated tasks and currList
+    function deleteList(id) {
+        if (id === currListId) {
+            setCurrListId();
+        }
+        setTodoLists(todoLists.filter((list) => list.id !== id));
+        setTasks(tasks.filter((task) => task.parentList !== id));
+    }
     //Changes currList by id and update state
     function changeCurrList(id) {
-        const newCurrList = todoLists.findIndex((list) => list.id === id);
-        setCurrList(newCurrList);
+        const newCurrList = todoLists.find((list) => list.id === id);
+        setCurrListId(newCurrList.id);
     }
     //TOGGLES complete of a task by id
-    function toggleComplete(id){
-        setTasks(tasks.map((task)=>{
-            if (task.id === id){
-                return {...task, completed: !task.completed};
+    function toggleComplete(id) {
+        setTasks(tasks.map((task) => {
+            if (task.id === id) {
+                return { ...task, completed: !task.completed };
             }
             return task;
         }));
@@ -55,13 +67,14 @@ export default function App() {
                     {todoLists.map((list) => {
                         return (
                             <List
-                            setTitle={(newTitle)=>setTitle(list.id, newTitle)}
-                            setToCurrList={()=>changeCurrList(list.id)} key={list.id}
-                            onEdit={list.id === currEdit}
-                            setEdit={(active)=>{
-                                if (active) setCurrEdit(list.id)
-                                else setCurrEdit(false)
-                            }}
+                                setTitle={(newTitle) => setTitle(list.id, newTitle)}
+                                setToCurrList={() => changeCurrList(list.id)} key={list.id}
+                                onEdit={list.id === currEdit}
+                                setEdit={(active) => {
+                                    if (active) setCurrEdit(list.id)
+                                    else setCurrEdit(false)
+                                }}
+                                deleteSelf={() => deleteList(list.id)}
                             >
                                 {list.title}
                             </List>
@@ -69,12 +82,12 @@ export default function App() {
                     })}
                 </ul>
             </div>
-            {currList !== undefined && 
+            {currListId &&
                 <TodosUI
-                currList={todoLists[currList]}
-                addTask={(task)=>setTasks([...tasks, task])}
-                allTasks={tasks}
-                toggleComplete={toggleComplete}
+                    currList={todoLists.find((list) => list.id === currListId)}
+                    addTask={(task) => setTasks([...tasks, task])}
+                    allTasks={tasks}
+                    toggleComplete={toggleComplete}
                 />
             }
         </>

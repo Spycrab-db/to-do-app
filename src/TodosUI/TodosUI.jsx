@@ -2,7 +2,7 @@ import Task from './Task';
 import NewTask from './NewTask';
 import CompletedDropdown from './CompletedDropdown';
 export default function TodosUI({ currList, allTasks, addTask, toggleComplete }) {
-    const tasks = allTasks.filter((task) => task.parentLists.includes(currList));
+    const tasks = allTasks.filter((task) => task.parentList === currList);
     const incomplete = tasks.filter((task) => !task.completed);
     const completed = tasks.filter((task) => task.completed);
     return (
