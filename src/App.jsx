@@ -1,43 +1,41 @@
 import './css/App.css';
-import Listbar from './ListBar/ListBar';
 import List from './ListBar/List';
 import TodosUI from './TodosUI/TodosUI';
 import TaskList from './Classes/TaskList';
 import { useState } from 'react';
 
+//Find a way to flatten data whilist not having unecessary re-renders to the sidebar
+//after adding a task to a taskList
+//Work more on the handler functions
+
 export default function App() {
-    //Defines the array of todo lists (The entire dataset)
+    //Defines all the todo lists
     const [todoLists, setTodoLists] = useState([]);
+    //Defines all the tasks
+    const [tasks, setTasks] = useState([]);
     //Defines the index of the active list
     const [currList, setCurrList] = useState();
-    function addTask(listId, task) {
+
+    //Changes the title of a list by id and updates the state
+    function setTitle(listId, newTitle) {
         setTodoLists(todoLists.map((list) => {
             if (list.id === listId) {
-                return { ...list, taskArr: [...taskArr, task] };
-            }
-            return list;
-        }));
-    }
-    //Changes the list with the old title and updates the state
-    function setTitle(oldTitle, newTitle) {
-        setTodoLists(todoLists.map((list) => {
-            if (list.title === oldTitle) {
                 return { ...list, title: newTitle };
             }
             return list;
         }));
     }
-    //Changes currList by finding the same title and update state
-    function changeCurrList(title) {
-        const newCurrList = todoLists.findIndex((list) => list.title === title);
+    //Changes currList by id and update state
+    function changeCurrList(id) {
+        const newCurrList = todoLists.findIndex((list) => list.id === id);
         setCurrList(newCurrList);
     }
     return (
         <>
             <div className="side-bar">
                 <button className="new-list" onClick={() => {
-                    setTodoLists((oldTaskList) => {
-                        return [...oldTaskList, new TaskList()]
+                    setTodoLists((oldTaskLists) => {
+                        return [...oldTaskLists, new TaskList()]
                     });
                 }}>
                     + New List
@@ -45,7 +43,10 @@ export default function App() {
                 <ul>
                     {todoLists.map((list) => {
                         return (
-                            <List setTitle={setTitle} changeCurrList={changeCurrList}>
+                            <List
+                            setTitle={(newTitle)=>setTitle(list.id, newTitle)}
+                            setToCurrList={()=>changeCurrList(list.id)} key={list.id}
+                            >
                                 {list.title}
                             </List>
                         )
@@ -53,7 +54,11 @@ export default function App() {
                 </ul>
             </div>
             {currList !== undefined && 
-                <TodosUI currList={todoLists[currList]} addTask={addTask} />
+                <TodosUI
+                currList={todoLists[currList]}
+                addTask={(task)=>setTasks([...tasks, task])}
+                allTasks={tasks}
+                />
             }
         </>
     )

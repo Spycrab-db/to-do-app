@@ -1,3 +1,5 @@
-export default function Task({task}){
-    <li>{task.title}</li>
+export default function Task({ task }) {
+    return (
+        <li>{task.title}</li>
+    )
 }
