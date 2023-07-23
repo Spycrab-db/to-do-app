@@ -13,8 +13,9 @@ export default function TodosUI({ currList, allTasks, addTask, toggleComplete })
                     return <Task task={task} key={task.id} toggleComplete={toggleComplete} />
                 })}
             </ul>
+            <h2>Add a Task:</h2>
             <NewTask addTask={addTask} currList={currList} />
-            <h2>Completed Tasks:</h2>
+            <h3>Completed Tasks:</h3>
             <ul>
                 {completed.map((task) => {
                     return (

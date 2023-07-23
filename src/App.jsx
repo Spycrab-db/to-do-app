@@ -4,9 +4,10 @@ import TodosUI from './TodosUI/TodosUI';
 import TaskList from './Classes/TaskList';
 import { useState } from 'react';
 
-//Find a way to flatten data whilist not having unecessary re-renders to the sidebar
-//after adding a task to a taskList
-//Work more on the handler functions
+// Move onEdit state here to only allow one edit at a time (maybe create a sidebar Component)
+// Automatically focus on edit after adding or double clicking a list
+// Add a dropdown menu for completed tasks
+// Styling
 
 export default function App() {
     //Defines all the todo lists
