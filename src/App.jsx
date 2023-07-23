@@ -4,8 +4,6 @@ import TodosUI from './TodosUI/TodosUI';
 import TaskList from './Classes/TaskList';
 import { useState } from 'react';
 
-// Change currList to the newly added list after naming it
-// Add a dropdown menu for completed tasks
 // Styling
 
 export default function App() {

@@ -1,6 +1,6 @@
 import Task from './Task';
 import NewTask from './NewTask';
-import { useState } from 'react';
+import CompletedDropdown from './CompletedDropdown';
 export default function TodosUI({ currList, allTasks, addTask, toggleComplete }) {
     const tasks = allTasks.filter((task) => task.parentLists.includes(currList));
     const incomplete = tasks.filter((task) => !task.completed);
@@ -15,17 +15,7 @@ export default function TodosUI({ currList, allTasks, addTask, toggleComplete })
             </ul>
             <h2>Add a Task:</h2>
             <NewTask addTask={addTask} currList={currList} />
-            <h3>Completed Tasks:</h3>
-            <ul>
-                {completed.map((task) => {
-                    return (
-                        <li key={task.id}>
-                            {task.title}
-                            <button onClick={()=>toggleComplete(task.id)}>Undo</button>
-                        </li>
-                    )
-                })}
-            </ul>
+            <CompletedDropdown tasks={completed} undo={toggleComplete}/>
         </div>
     )
 }

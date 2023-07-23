@@ -14,6 +14,7 @@ export default function List({ children, setTitle, setToCurrList, onEdit, setEdi
                         evt.preventDefault();
                         setTitle(evt.target.elements['title'].value);
                         setEdit(false);
+                        setToCurrList();
                     }}>
                         <input
                             type="text"
