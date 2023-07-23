@@ -1,15 +1,21 @@
 import { useState } from "react"
 
-export default function List({ children, setTitle, setToCurrList, onEdit, setEdit, deleteSelf }) {
+export default function List({ children, setTitle, takenTitles, setToCurrList, onEdit, setEdit, deleteSelf }) {
     const [inputTitle, setInputTitle] = useState("");
-    return (
-        <li>
-            {onEdit ? (
+    const [error, setError] = useState(false);
+    if (onEdit) {
+        return (
+            <li>
                 <form onSubmit={(evt) => {
                     evt.preventDefault();
-                    setTitle(evt.target.elements['title'].value);
-                    setEdit(false);
-                    setToCurrList();
+                    if (takenTitles.includes(inputTitle) && inputTitle !== children) {
+                        setError(true);
+                    } else {
+                        setError(false);
+                        setTitle(inputTitle);
+                        setEdit(false);
+                        setToCurrList();
+                    }
                 }}>
                     <input
                         required
@@ -27,28 +33,35 @@ export default function List({ children, setTitle, setToCurrList, onEdit, setEdi
                                 if (children) {
                                     setInputTitle(children);
                                     setEdit(false);
+                                    setError(false);
                                 } else {
                                     deleteSelf();
                                 }
-
                             }
                         }}
                         onChange={(evt) => {
                             setInputTitle(evt.target.value);
                         }} />
                 </form>
-            ) : (
-                <div onClick={setToCurrList} onDoubleClick={() => setEdit(true)}>
-                    {children}
-                    <button onClick={(evt)=>{
-                        evt.stopPropagation();
-                        deleteSelf();
-                    }}>
-                        X
-                    </button>
-                </div>
-            )
-            }
+                {error && (
+                    <div>
+                        Title is already taken
+                    </div>
+                )}
+            </li>
+        )
+    }
+    return (
+        <li>
+            <div onClick={setToCurrList} onDoubleClick={() => setEdit(true)}>
+                {children}
+                <button onClick={(evt) => {
+                    evt.stopPropagation();
+                    deleteSelf();
+                }}>
+                    X
+                </button>
+            </div>
         </li>
     )
 }

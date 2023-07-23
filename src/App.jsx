@@ -4,7 +4,6 @@ import TodosUI from './TodosUI/TodosUI';
 import TaskList from './Classes/TaskList';
 import { useState } from 'react';
 
-// Prevent nameless list titles and tasks
 // Prevent duplicate list names
 // Delete lists
 // Delete tasks
@@ -72,6 +71,7 @@ export default function App() {
                         return (
                             <List
                                 setTitle={(newTitle) => setTitle(list.id, newTitle)}
+                                takenTitles={todoLists.map((list)=>list.title)}
                                 setToCurrList={() => changeCurrList(list.id)} key={list.id}
                                 onEdit={list.id === currEdit}
                                 setEdit={(active) => {
