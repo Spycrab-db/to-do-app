@@ -1,8 +1,10 @@
 import { useState } from "react"
+import './css/List.css';
 
 export default function List({ children, setTitle, takenTitles, setToCurrList, onEdit, setEdit, deleteSelf }) {
     const [inputTitle, setInputTitle] = useState("");
     const [error, setError] = useState();
+    const [showDelete, setShowDelete] = useState(false);
     function submitTitle() {
         if (!inputTitle) {
             if (children) {
@@ -54,26 +56,34 @@ export default function List({ children, setTitle, takenTitles, setToCurrList, o
                 </form>
                 {error && (
                     <>
-                    <div>
-                        {error}
-                    </div>
-                    <div>
-                        Esc to cancel
-                    </div>
+                        <div>
+                            {error}
+                        </div>
+                        <div>
+                            Esc to cancel
+                        </div>
                     </>
                 )}
             </li>
         )
     }
     return (
-        <li>
-            <div onClick={setToCurrList} onDoubleClick={() => setEdit(true)}>
-                {children}
-                <button onClick={(evt) => {
+        <li className="list">
+            <div
+                onClick={setToCurrList}
+                onDoubleClick={() => setEdit(true)}
+                onMouseEnter={() => setShowDelete(true)}
+                onMouseLeave={() => setShowDelete(false)}
+            >
+                <p>{children}</p>
+                <button className={`delete-list${showDelete ? " visible" : ""}`} onClick={(evt) => {
                     evt.stopPropagation();
                     deleteSelf();
-                }}>
-                    X
+                }}
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                 </button>
             </div>
         </li>

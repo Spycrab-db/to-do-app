@@ -7,9 +7,35 @@ body{
     display: flex;
     gap: 4rem;
 }
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+button{
+    border: none;
+    color: white;
+    background: none;
+}
 .side-bar{
     width: 20%;
 }
 .todo-ui{
     flex: 1;
+}
+.new-list{
+    width: 60px;
+    display: block;
+    margin: auto;
+}
+.new-list svg{
+    transition: all .2s;
+    & path{
+        transition: all .2s;
+    }
+    &:hover{
+        translate: 0 -.2rem;
+        & path{
+            color: #cbcbcb;
+        }
+    }
 }
