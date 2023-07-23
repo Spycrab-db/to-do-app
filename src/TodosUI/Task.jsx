@@ -1,5 +1,10 @@
-export default function Task({ task }) {
+export default function Task({ task, toggleComplete }) {
     return (
-        <li>{task.title}</li>
+        <li>
+            <button onClick={()=>toggleComplete(task.id)}>
+                ✔
+            </button>
+            {task.title}
+        </li>
     )
 }

@@ -30,6 +30,15 @@ export default function App() {
         const newCurrList = todoLists.findIndex((list) => list.id === id);
         setCurrList(newCurrList);
     }
+    //TOGGLES complete of a task by id
+    function toggleComplete(id){
+        setTasks(tasks.map((task)=>{
+            if (task.id === id){
+                return {...task, completed: !task.completed};
+            }
+            return task;
+        }));
+    }
     return (
         <>
             <div className="side-bar">
@@ -58,6 +67,7 @@ export default function App() {
                 currList={todoLists[currList]}
                 addTask={(task)=>setTasks([...tasks, task])}
                 allTasks={tasks}
+                toggleComplete={toggleComplete}
                 />
             }
         </>
