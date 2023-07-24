@@ -1,0 +1,9 @@
+.task-li{
+    color: black;
+    background-color: #B1F1FF;
+    margin-bottom: 1rem;
+    padding: .7rem;
+    border-radius: .4rem;
+    font-size: 2rem;
+    font-weight: 300;
+}

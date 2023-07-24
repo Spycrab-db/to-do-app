@@ -25,6 +25,7 @@ input{
 }
 .todo-ui{
     flex: 1;
+    margin-right: 5rem;
 }
 .new-list{
     width: 60px;
@@ -41,5 +42,17 @@ input{
         & path{
             color: #cbcbcb;
         }
+    }
+}
+.fade-in{
+    animation: fade-in .3s;
+}
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }

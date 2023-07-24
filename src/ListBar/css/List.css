@@ -30,3 +30,10 @@
     padding: .4rem;
     border-radius: .2rem;
 }
+.error-message{
+    color: rgb(255, 160, 160);
+}
+.cancel-message{
+    font-size: small;
+    color: rgb(220, 255, 220);
+}

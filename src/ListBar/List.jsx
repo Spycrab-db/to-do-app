@@ -57,10 +57,10 @@ export default function List({ children, setTitle, takenTitles, setToCurrList, o
                 </form>
                 {error && (
                     <>
-                        <div>
+                        <div class="error-message fade-in">
                             {error}
                         </div>
-                        <div>
+                        <div class="cancel-message fade-in">
                             Esc to cancel
                         </div>
                     </>
