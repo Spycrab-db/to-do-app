@@ -1,66 +1,53 @@
 import { useState } from "react"
+import EditForm from '../EditForm';
 import './css/List.css';
 
 export default function List({ children, setTitle, takenTitles, setToCurrList, onEdit, setEdit, deleteSelf }) {
-    const [inputTitle, setInputTitle] = useState("");
     const [error, setError] = useState();
     const [showDelete, setShowDelete] = useState(false);
-    function submitTitle() {
-        if (!inputTitle) {
+    function submitTitle(title) {
+        if (!title) {
             if (children) {
                 setError();
                 setTitle(children);
-                setInputTitle(children);
                 setEdit(false);
                 setToCurrList();
             } else deleteSelf();
         }
-        else if (takenTitles.includes(inputTitle) && inputTitle !== children) {
+        else if (takenTitles.includes(title) && title !== children) {
             setError("Title is already taken");
         }
         else {
             setError();
-            setTitle(inputTitle);
+            setTitle(title);
             setEdit(false);
             setToCurrList();
+        }
+    }
+    function cancelEdit(){
+        if (children) {
+            setEdit(false);
+            setError();
+        } else {
+            deleteSelf();
         }
     }
     if (onEdit) {
         return (
             <li>
-                <form onSubmit={(evt) => {
-                    evt.preventDefault();
-                    submitTitle();
-                }}>
-                    <input
-                        type="text"
-                        name="title"
-                        className="input-list"
-                        value={inputTitle}
-                        placeholder="New List"
-                        autoFocus
-                        onBlur={submitTitle}
-                        onKeyDown={(evt) => {
-                            if (evt.key === 'Escape') {
-                                if (children) {
-                                    setInputTitle(children);
-                                    setEdit(false);
-                                    setError();
-                                } else {
-                                    deleteSelf();
-                                }
-                            }
-                        }}
-                        onChange={(evt) => {
-                            setInputTitle(evt.target.value);
-                        }} />
-                </form>
+                <EditForm placeholder="New List"
+                submitHandler={submitTitle}
+                escapeHandler={cancelEdit}
+                className="input-list"
+                >
+                    {children}
+                </EditForm>
                 {error && (
                     <>
-                        <div class="error-message fade-in">
+                        <div className="error-message fade-in">
                             {error}
                         </div>
-                        <div class="cancel-message fade-in">
+                        <div className="cancel-message fade-in">
                             Esc to cancel
                         </div>
                     </>

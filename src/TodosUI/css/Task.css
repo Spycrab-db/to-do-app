@@ -8,8 +8,8 @@
     font-weight: 300;
     transition: all .2s;
 
-    &:hover {
-        opacity: .9
+    &:hover .complete-button svg {
+        color: white;
     }
 }
 
@@ -17,35 +17,41 @@
     display: flex;
     gap: 1rem;
 }
-.task-button{
+
+.task-button {
     cursor: pointer;
     padding: 0;
     transition: all .2s;
 }
+
 .complete-button svg {
     transition: all .2s;
     color: rgb(0, 0, 0);
     height: 3rem;
+
     &:hover {
         color: rgb(255, 255, 255);
     }
-}
-.edit-button, .delete-button{
-    color: rgb(45, 45, 45);
-    opacity: 0;
-    & svg{
-        height: 2rem;
-    }
-    & svg:hover{
-        color: white;
-    }
-}
-.edit-button{
-    margin-left: auto;
 }
 
 .task-title {
     margin: 0;
     display: flex;
     align-items: center;
+    flex-grow: 1;
+}
+
+.edit-button,
+.delete-button {
+    color: rgb(45, 45, 45);
+    opacity: 0;
+
+    & svg {
+        height: 2rem;
+    }
+
+    & svg:hover {
+        color: white;
+        opacity: 1;
+    }
 }

@@ -4,6 +4,8 @@ import TodosUI from './TodosUI/TodosUI';
 import TaskList from './Classes/TaskList';
 import { useState } from 'react';
 
+// Move editing title logic to another component
+// Think about moving an editable item in its own component (List and Task)
 // Styling
 // Connect to localStorage
 

@@ -47,6 +47,9 @@ input{
 .fade-in{
     animation: fade-in .3s;
 }
+.visible{
+    opacity: 1 !important;
+}
 @keyframes fade-in {
     from {
         opacity: 0;
