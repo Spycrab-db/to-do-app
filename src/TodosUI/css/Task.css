@@ -1,9 +1,43 @@
 .task-li{
     color: black;
-    background-color: #B1F1FF;
+    background-color: #92d2ff;
     margin-bottom: 1rem;
     padding: .7rem;
     border-radius: .4rem;
     font-size: 2rem;
     font-weight: 300;
+    transition: all .2s;
+    &:hover{
+        opacity: .9
+    }
+}
+.checkmark{
+    transition: all .2s;
+    color: rgb(0, 0, 0);
+    height: 50px;
+    &:hover{
+        color: rgb(255, 255, 255);
+    }
+}
+.task-li div{
+    display: flex;
+    justify-content: space-between;
+    & p{
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    & button{
+        padding: 0;
+        height: 2rem;
+        margin-top: auto;
+        margin-bottom: auto;
+        transition: all .2s;
+        opacity: 0;
+    }
+    & button svg{
+        height: 2rem;
+        color: rgb(99, 99, 99);
+    }
 }
