@@ -5,7 +5,7 @@ export default function NewTask({ addTask, currList }) {
     const [inputTitle, setInputTitle] = useState("");
     function handleSubmit(evt) {
         evt.preventDefault();
-        const newTask = new Task(inputTitle, false, currList);
+        const newTask = new Task(inputTitle, false, currList.id);
         addTask(newTask);
         setInputTitle("");
     }

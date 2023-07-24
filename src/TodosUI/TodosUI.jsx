@@ -4,7 +4,7 @@ import CompletedDropdown from './CompletedDropdown';
 import './css/TodosUI.css'
 import { useRef, useEffect } from 'react';
 export default function TodosUI({ currList, allTasks, addTask, toggleComplete, deleteTask }) {
-    const tasks = allTasks.filter((task) => task.parentList === currList);
+    const tasks = allTasks.filter((task) => task.parentListId === currList.id);
     const incomplete = tasks.filter((task) => !task.completed);
     const completed = tasks.filter((task) => task.completed);
     return (
