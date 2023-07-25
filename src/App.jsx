@@ -4,8 +4,10 @@ import TodosUI from './TodosUI/TodosUI';
 import TaskList from './Classes/TaskList';
 import { useState } from 'react';
 
-// Move editing title logic to another component
-// Think about moving an editable item in its own component (List and Task)
+// Extract sidebar into its own component
+// todoLists and currEdit state can be in the sidebar
+// tasks state can be in the todosUI
+// App only stores currListId state
 // Styling
 // Connect to localStorage
 
