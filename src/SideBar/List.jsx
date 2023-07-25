@@ -11,7 +11,6 @@ export default function List({ children, setTitle, takenTitles, setToCurrList, o
                 setError();
                 setTitle(children);
                 setEdit(false);
-                setToCurrList();
             } else deleteSelf();
         }
         else if (takenTitles.includes(title) && title !== children) {
@@ -21,7 +20,6 @@ export default function List({ children, setTitle, takenTitles, setToCurrList, o
             setError();
             setTitle(title);
             setEdit(false);
-            setToCurrList();
         }
     }
     function cancelEdit() {
