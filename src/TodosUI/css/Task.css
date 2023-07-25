@@ -2,9 +2,9 @@
     color: black;
     background-color: #92d2ff;
     margin-bottom: 1rem;
-    padding: .7rem;
-    border-radius: .4rem;
-    font-size: 2rem;
+    padding: .5rem;
+    border-radius: .2rem;
+    font-size: 1.5rem;
     font-weight: 300;
     transition: all .2s;
 
@@ -14,6 +14,8 @@
 }
 
 .task-li div {
+    height: 2.3rem;
+    cursor: pointer;
     display: flex;
     gap: 1rem;
 }
@@ -27,7 +29,7 @@
 .complete-button svg {
     transition: all .2s;
     color: rgb(0, 0, 0);
-    height: 3rem;
+    height: 2rem;
 
     &:hover {
         color: rgb(255, 255, 255);
@@ -54,4 +56,8 @@
         color: white;
         opacity: 1;
     }
+}
+.task-edit-input{
+    border: none;
+    width: 100%;
 }
