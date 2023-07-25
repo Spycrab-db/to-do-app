@@ -24,7 +24,7 @@ export default function List({ children, setTitle, takenTitles, setToCurrList, o
             setToCurrList();
         }
     }
-    function cancelEdit(){
+    function cancelEdit() {
         if (children) {
             setEdit(false);
             setError();
@@ -34,14 +34,16 @@ export default function List({ children, setTitle, takenTitles, setToCurrList, o
     }
     if (onEdit) {
         return (
-            <li>
-                <EditForm placeholder="New List"
-                submitHandler={submitTitle}
-                escapeHandler={cancelEdit}
-                className="input-list"
-                >
-                    {children}
-                </EditForm>
+            <>
+                <li className="input-list-li">
+                    <EditForm placeholder="New List"
+                        submitHandler={submitTitle}
+                        escapeHandler={cancelEdit}
+                        className="input-list"
+                    >
+                        {children}
+                    </EditForm>
+                </li>
                 {error && (
                     <>
                         <div className="error-message fade-in">
@@ -52,7 +54,7 @@ export default function List({ children, setTitle, takenTitles, setToCurrList, o
                         </div>
                     </>
                 )}
-            </li>
+            </>
         )
     }
     return (
