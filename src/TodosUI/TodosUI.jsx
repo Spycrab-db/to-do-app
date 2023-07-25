@@ -3,7 +3,7 @@ import NewTask from './NewTask';
 import CompletedDropdown from './CompletedDropdown';
 import './css/TodosUI.css'
 import { useRef, useEffect } from 'react';
-export default function TodosUI({ currList, allTasks, addTask, toggleComplete, deleteTask }) {
+export default function TodosUI({ currList, allTasks, addTask, toggleComplete, deleteTask, setTitle }) {
     const tasks = allTasks.filter((task) => task.parentListId === currList.id);
     const incomplete = tasks.filter((task) => !task.completed);
     const completed = tasks.filter((task) => task.completed);
@@ -16,7 +16,8 @@ export default function TodosUI({ currList, allTasks, addTask, toggleComplete, d
                         task={task}
                         key={task.id}
                         toggleComplete={toggleComplete}
-                        deleteSelf={() => deleteTask(task)} />
+                        deleteSelf={() => deleteTask(task)}
+                        setTitle={(newTitle)=>setTitle(task.id, newTitle)} />
                 })}
             </ul>
             <h2>Add a Task:</h2>

@@ -41,6 +41,15 @@ export default function App() {
         const newCurrList = todoLists.find((list) => list.id === id);
         setCurrListId(newCurrList.id);
     }
+    //Changes a title of a task by id
+    function setTaskTitle(taskId, newTitle){
+        setTasks(tasks.map((task) => {
+            if (task.id === taskId) {
+                return { ...task, title: newTitle };
+            }
+            return task;
+        }));
+    }
     //TOGGLES complete of a task by id
     function toggleComplete(id) {
         setTasks(tasks.map((task) => {
@@ -102,6 +111,7 @@ export default function App() {
                     allTasks={tasks}
                     toggleComplete={toggleComplete}
                     deleteTask={deleteTask}
+                    setTitle={setTaskTitle}
                 />
             }
         </>
