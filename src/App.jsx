@@ -99,6 +99,7 @@ export default function App() {
                                     else setCurrEdit(false)
                                 }}
                                 deleteSelf={() => deleteList(list.id)}
+                                className={`${list.id === currListId ? "selected" : ""}`}
                             >
                                 {list.title}
                             </List>

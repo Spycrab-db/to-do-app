@@ -2,7 +2,7 @@ import { useState } from "react"
 import EditForm from '../EditForm';
 import './css/List.css';
 
-export default function List({ children, setTitle, takenTitles, setToCurrList, onEdit, setEdit, deleteSelf }) {
+export default function List({ children, setTitle, takenTitles, setToCurrList, onEdit, setEdit, deleteSelf, className }) {
     const [error, setError] = useState();
     const [showDelete, setShowDelete] = useState(false);
     function submitTitle(title) {
@@ -58,7 +58,7 @@ export default function List({ children, setTitle, takenTitles, setToCurrList, o
         )
     }
     return (
-        <li className="list">
+        <li className={`list ${className}`}>
             <div
                 onClick={setToCurrList}
                 onDoubleClick={() => setEdit(true)}

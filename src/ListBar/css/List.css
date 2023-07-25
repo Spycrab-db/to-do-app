@@ -1,7 +1,10 @@
 .list {
     font-size: large;
-    padding-left: .4rem;
+    padding-left: .7rem;
     transition: all .1s;
+    &.selected{
+        background-color: #424242;
+    }
 }
 
 .list div {
