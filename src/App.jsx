@@ -32,18 +32,19 @@ export default function App() {
             return task;
         }));
     }
-    //Deletes a task or an array of tasks
+    //Deletes a task or an array of tasks (compares the task id)
     function deleteTask(tasksToDelete) {
         if (!Array.isArray(tasksToDelete)) {
             tasksToDelete = [tasksToDelete];
         }
-        setTasks(tasks.filter((task) => !tasksToDelete.includes(task)));
+        //Filter by keeping the task whose id is not in tasksToDelete
+        setTasks(tasks.filter(task => !tasks.map(task => task.id).includes(task.id)));
     }
     return (
         <>
             <SideBar setCurrList={setCurrList}
                 currList={currList}
-                deleteListTasks={(id) => setTasks(tasks.filter((task) => task.id !== id))}
+                deleteListTasks={(id) => setTasks(tasks.filter((task) => task.parentListId !== id))}
             />
             {currList &&
                 <TodosUI
