@@ -35,10 +35,13 @@ export default function App() {
     //Deletes a task or an array of tasks (compares the task id)
     function deleteTask(tasksToDelete) {
         if (!Array.isArray(tasksToDelete)) {
-            tasksToDelete = [tasksToDelete];
+            setTasks(tasks.filter(task=>task.id !== tasksToDelete.id));
         }
-        //Filter by keeping the task whose id is not in tasksToDelete
-        setTasks(tasks.filter(task => !tasks.map(task => task.id).includes(task.id)));
+        else{
+            //Filter by keeping the task whose id is not in tasksToDelete
+            setTasks(tasks.filter(task => !tasks.map(task => task.id).includes(task.id)));
+        }
+        
     }
     return (
         <>
