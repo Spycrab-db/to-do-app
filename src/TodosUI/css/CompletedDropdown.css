@@ -1,0 +1,30 @@
+.completed-tasks {
+  display: none;
+}
+
+.completed-tasks.slide-in {
+  display: block;
+  animation: slide-in 0.2s;
+  animation-fill-mode: forwards;
+}
+.completed-tasks.slide-out {
+  animation: slide-out 0.2s;
+  animation-fill-mode: forwards;
+  display: none;
+}
+@keyframes slide-in {
+  from {
+    height: 0;
+  }
+  to {
+    height: 5rem;
+  }
+}
+@keyframes slide-out {
+  from {
+    height: 5rem;
+  }
+  to {
+    height: 0;
+  }
+}

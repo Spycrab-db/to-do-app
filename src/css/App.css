@@ -1,70 +1,70 @@
-body{
-    background-color: #141414;
-    color: #dddddd;
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
+body {
+  background-color: #141414;
+  color: #dddddd;
+  font-family: "Roboto", sans-serif;
+  margin: 0;
 }
-#root{
-    height: 100vh;
-    display: flex;
-    gap: 4rem;
+#root {
+  height: 100vh;
+  display: flex;
+  gap: 4rem;
 }
-ul{
-    list-style-type: none;
-    padding: 0;
+ul {
+  list-style-type: none;
+  padding: 0;
 }
-button{
-    border: none;
-    color: white;
-    background: none;
+button {
+  border: none;
+  color: white;
+  background: none;
 }
-input{
-    all: unset;
-    border: solid rgb(188, 188, 188);
+input {
+  all: unset;
+  border: solid rgb(188, 188, 188);
 }
-.side-bar{
-    width: 20%;
-    border-right: 1px solid;
+.side-bar {
+  width: 20%;
+  border-right: 1px solid;
 }
-.todo-ui{
-    flex: 1;
-    margin-right: 14rem;
+.todo-ui {
+  flex: 1;
+  margin-right: 14rem;
 }
-.new-list-container{
-    border-bottom: 1px solid;
-    padding-top: 5%;
-    padding-bottom: 3%;
+.new-list-container {
+  border-bottom: 1px solid;
+  padding-top: 5%;
+  padding-bottom: 3%;
 }
-.new-list{
-    width: 60px;
-    display: block;
-    margin: auto;
-    padding: 0;
+.new-list {
+  width: 60px;
+  display: block;
+  margin: auto;
+  padding: 0;
 }
-.new-list svg{
-    transition: all .2s;
-    & path{
-        transition: all .2s;
+.new-list svg {
+  transition: all 0.2s;
+  & path {
+    transition: all 0.2s;
+  }
+  &:hover {
+    translate: 0 -0.2rem;
+    & path {
+      color: #cbcbcb;
     }
-    &:hover{
-        translate: 0 -.2rem;
-        & path{
-            color: #cbcbcb;
-        }
-    }
+  }
 }
-.fade-in{
-    animation: fade-in .3s;
+.fade-in {
+  animation: fade-in 0.3s;
 }
-.visible{
-    opacity: 1 !important;
+.visible {
+  opacity: 1 !important;
 }
 @keyframes fade-in {
-    from {
-        opacity: 0;
-    }
+  from {
+    opacity: 0;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
