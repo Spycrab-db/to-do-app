@@ -1,3 +1,8 @@
+.todo-ui{
+    display: flex;
+    flex-direction: column;
+}
+
 .list-title {
     font-weight: normal;
     font-size: 3.3rem;

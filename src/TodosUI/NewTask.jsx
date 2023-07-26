@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Task from '../Classes/Task';
+import './css/NewTask.css';
 
 export default function NewTask({ addTask, currList }) {
     const [inputTitle, setInputTitle] = useState("");
@@ -12,6 +13,8 @@ export default function NewTask({ addTask, currList }) {
     return (
         <form onSubmit={handleSubmit}>
             <input type="text" htmlFor="newTask"
+            className="new-task-input"
+            placeholder="+ Add Task"
             required
             value={inputTitle}
             onChange={(evt) => {

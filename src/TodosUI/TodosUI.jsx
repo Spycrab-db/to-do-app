@@ -10,7 +10,7 @@ export default function TodosUI({ currList, allTasks, addTask, toggleComplete, d
     return (
         <div className="todo-ui fade-in" key={currList.title}>
             <h1 className="list-title">{currList.title}</h1>
-            <ul>
+            <ul className="task-ul">
                 {incomplete.map((task) => {
                     return <Task
                         task={task}
@@ -20,7 +20,6 @@ export default function TodosUI({ currList, allTasks, addTask, toggleComplete, d
                         setTitle={(newTitle)=>setTitle(task.id, newTitle)} />
                 })}
             </ul>
-            <h2>Add a Task:</h2>
             <NewTask addTask={addTask} currList={currList} />
             <CompletedDropdown
             tasks={completed}
