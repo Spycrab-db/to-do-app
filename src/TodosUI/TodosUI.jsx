@@ -9,12 +9,16 @@ export default function TodosUI({
   toggleComplete,
   deleteTask,
   setTitle,
+  displayLists,
 }) {
   const tasks = allTasks.filter((task) => task.parentListId === currList.id);
   const incomplete = tasks.filter((task) => !task.completed);
   const completed = tasks.filter((task) => task.completed);
   return (
-    <div className="todo-ui fade-in" key={currList.title}>
+    <div
+      className={`todo-ui fade-in${displayLists ? " hide" : ""}`}
+      key={currList.title}
+    >
       <h1 className="list-title">{currList.title}</h1>
       <ul className="task-ul">
         {incomplete.map((task) => {

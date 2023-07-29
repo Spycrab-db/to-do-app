@@ -2,7 +2,12 @@ import { useState } from "react";
 import TaskList from "../Classes/TaskList";
 import List from "./List";
 
-export default function SideBar({ currList, setCurrList, deleteListTasks }) {
+export default function SideBar({
+  currList,
+  setCurrList,
+  deleteListTasks,
+  displayLists,
+}) {
   //Defines all the todo lists
   const [todoLists, setTodoLists] = useState([]);
   //Defines the id of the list that is onEdit
@@ -32,7 +37,7 @@ export default function SideBar({ currList, setCurrList, deleteListTasks }) {
     setCurrList(newCurrList);
   }
   return (
-    <div className="side-bar">
+    <div className={`side-bar${displayLists ? " show" : ""}`}>
       <div className="new-list-container">
         <button
           className="new-list"

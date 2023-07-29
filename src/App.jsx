@@ -11,6 +11,8 @@ export default function App() {
   const [tasks, setTasks] = useState([]);
   //Defines the current list
   const [currList, setCurrList] = useState();
+  //Defines what is displayed on mobile
+  const [displayLists, setDisplayLists] = useState(false);
 
   //Changes a title of a task by id
   function setTaskTitle(taskId, newTitle) {
@@ -50,23 +52,33 @@ export default function App() {
   }
   return (
     <>
-      <SideBar
-        setCurrList={setCurrList}
-        currList={currList}
-        deleteListTasks={(id) =>
-          setTasks(tasks.filter((task) => task.parentListId !== id))
-        }
-      />
-      {currList && (
-        <TodosUI
+      <button
+        className="list-button"
+        onClick={() => setDisplayLists(!displayLists)}
+      >
+        Lists
+      </button>
+      <div className="container">
+        <SideBar
+          setCurrList={setCurrList}
           currList={currList}
-          addTask={(task) => setTasks([...tasks, task])}
-          allTasks={tasks}
-          toggleComplete={toggleComplete}
-          deleteTask={deleteTask}
-          setTitle={setTaskTitle}
+          deleteListTasks={(id) =>
+            setTasks(tasks.filter((task) => task.parentListId !== id))
+          }
+          displayLists={displayLists}
         />
-      )}
+        {currList && (
+          <TodosUI
+            currList={currList}
+            addTask={(task) => setTasks([...tasks, task])}
+            allTasks={tasks}
+            toggleComplete={toggleComplete}
+            deleteTask={deleteTask}
+            setTitle={setTaskTitle}
+            displayLists={displayLists}
+          />
+        )}
+      </div>
     </>
   );
 }
