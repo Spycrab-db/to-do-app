@@ -105,6 +105,7 @@ export default function Task({ task, toggleComplete, deleteSelf, setTitle }) {
           placeholder="Task Name"
           submitHandler={submitTitle}
           escapeHandler={() => setOnEdit(false)}
+          maxLength={60}
           className="task-edit-input"
         >
           {task.title}

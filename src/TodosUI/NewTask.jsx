@@ -22,6 +22,7 @@ export default function NewTask({ addTask, currList }) {
         onChange={(evt) => {
           setInputTitle(evt.target.value);
         }}
+        maxLength={60}
       />
     </form>
   );

@@ -27,7 +27,7 @@ export default function SideBar({
     );
   }
   function deleteList(id) {
-    if (id === currList.id) {
+    if (currList && id === currList.id) {
       setCurrList(undefined);
     }
     setTodoLists(todoLists.filter((list) => list.id !== id));

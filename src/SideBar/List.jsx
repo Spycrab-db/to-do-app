@@ -45,6 +45,7 @@ export default function List({
             placeholder="New List"
             submitHandler={submitTitle}
             escapeHandler={cancelEdit}
+            maxLength={20}
             className="input-list"
           >
             {children}

@@ -7,6 +7,7 @@ export default function EditForm({
   placeholder,
   submitHandler,
   escapeHandler,
+  maxLength,
   className,
 }) {
   const [input, setInput] = useState(children);
@@ -33,6 +34,7 @@ export default function EditForm({
         onChange={(evt) => {
           setInput(evt.target.value);
         }}
+        maxLength={maxLength}
       />
     </form>
   );
