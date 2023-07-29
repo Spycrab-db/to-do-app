@@ -4,8 +4,14 @@ body {
   font-family: "Roboto", sans-serif;
   margin: 0;
 }
+#root {
+  display: flex;
+  height: 100svh;
+  flex-direction: column;
+}
 .container {
-  height: 100vh;
+  flex-grow: 1;
+  overflow: hidden;
   display: flex;
   gap: 4rem;
 }
@@ -84,17 +90,22 @@ input {
   }
   .list-button {
     display: inline-block;
+    align-self: baseline;
+    /* margin: 0.5rem; */
+    & svg {
+      width: 2rem;
+    }
   }
   .todo-ui {
-    transition: all 0.4s;
-    margin: 2rem;
+    transition: all 0.2s;
+    margin: 0 2rem;
     &.hide {
       flex-grow: 0;
       margin: 0;
     }
   }
   .side-bar {
-    transition: all 0.4s;
+    transition: all 0.2s;
     border: none;
     width: 0;
     flex-grow: 0;

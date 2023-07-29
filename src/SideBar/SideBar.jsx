@@ -7,6 +7,7 @@ export default function SideBar({
   setCurrList,
   deleteListTasks,
   displayLists,
+  setDisplayLists,
 }) {
   //Defines all the todo lists
   const [todoLists, setTodoLists] = useState([]);
@@ -35,6 +36,7 @@ export default function SideBar({
   function changeCurrList(id) {
     const newCurrList = todoLists.find((list) => list.id === id);
     setCurrList(newCurrList);
+    setDisplayLists(false);
   }
   return (
     <div className={`side-bar${displayLists ? " show" : ""}`}>
