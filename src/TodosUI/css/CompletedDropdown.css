@@ -1,28 +1,45 @@
-/* .completed-tasks {
-  transition: all 1s;
-  height: 0;
-} */
-.completed-tasks.slide-out {
-  animation: slide-out forwards 0.4s;
+:root {
+  --slide-height: 30%;
 }
-.completed-tasks.slide-in {
-  animation: slide-in forwards 0.4s;
+
+.completed-tasks {
+  overflow: auto;
+  transition: all 0.4s;
+  &.slide-out {
+    height: 0;
+    min-height: 0;
+    overflow: hidden;
+  }
+  &.slide-in {
+    height: var(--slide-height);
+    min-height: var(--slide-height);
+  }
+  &::-webkit-scrollbar {
+    width: 2px;
+    background-color: rgb(126, 126, 126);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: white;
+  }
 }
 
 @keyframes slide-in {
-  from {
+  0% {
     height: 0;
+    overflow: hidden;
   }
-  to {
-    height: 50%;
+  50% {
+    height: var(--slide-height);
+  }
+  100% {
+    overflow: auto;
   }
 }
 @keyframes slide-out {
   from {
-    height: 50%;
+    height: var(--slide-height);
   }
   to {
     height: 0;
-    display: none;
   }
 }
