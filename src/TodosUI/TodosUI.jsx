@@ -38,6 +38,7 @@ export default function TodosUI({
         tasks={completed}
         undo={toggleComplete}
         deleteTask={deleteTask}
+        setTitle={setTitle}
       />
     </div>
   );
