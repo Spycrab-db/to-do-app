@@ -23,23 +23,71 @@
   }
 }
 
-@keyframes slide-in {
-  0% {
-    height: 0;
-    overflow: hidden;
-  }
-  50% {
-    height: var(--slide-height);
-  }
-  100% {
-    overflow: auto;
+.completed-tasks-button {
+  transition: all 0.2s;
+  width: 9rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: solid;
+  border-radius: 0.4rem;
+  &:hover {
+    color: black;
+    background-color: #dddddd;
   }
 }
-@keyframes slide-out {
-  from {
-    height: var(--slide-height);
+.clear-button {
+  background-color: #ff5454;
+  transition: all 0.2s;
+  width: 4rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  &:hover {
+    background-color: #ff5454bf;
   }
-  to {
-    height: 0;
+}
+
+.completed-tasks-ul li {
+  color: black;
+  background-color: #a2d8ff;
+  margin-bottom: 0.7rem;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  font-size: 1.5rem;
+  font-weight: 300;
+  transition: all 0.2s;
+  & div {
+    display: flex;
+    align-items: center;
+    height: 2.3rem;
+    cursor: pointer;
+    gap: 1rem;
+  }
+  & button {
+    height: 100%;
+    width: 2.4rem;
+    padding: 0;
+    cursor: pointer;
+  }
+  &:hover {
+    opacity: 0.9;
+    & .delete-completed-task {
+      opacity: 1;
+    }
+  }
+  & svg {
+    transition: all 0.2s;
+    color: black;
+    height: 100%;
+  }
+  &:hover .undo-button svg {
+    color: white;
+  }
+}
+.delete-completed-task {
+  opacity: 0;
+  color: rgb(74, 74, 74);
+  &:hover svg {
+    color: white;
   }
 }
