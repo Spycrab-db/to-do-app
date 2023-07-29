@@ -1,6 +1,7 @@
 import { useState } from "react";
 import TaskList from "../Classes/TaskList";
 import List from "./List";
+import "./css/SideBar.css";
 
 export default function SideBar({
   currList,
@@ -75,7 +76,7 @@ export default function SideBar({
           </svg>
         </button>
       </div>
-      <ul>
+      <ul className="list-ul">
         {todoLists.map((list) => {
           return (
             <List

@@ -1,0 +1,18 @@
+.side-bar {
+  display: flex;
+  flex-direction: column;
+}
+
+.list-ul {
+  flex-grow: 1;
+  margin: 0;
+  padding-top: 0.3rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    width: 1px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(255, 255, 255);
+  }
+}

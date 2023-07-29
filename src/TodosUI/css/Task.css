@@ -1,79 +1,80 @@
-.task-ul{
-    flex-grow: 1;
-    max-height: 100%;
-    overflow: auto;
-    scrollbar-color: red;
-    padding-right: .5rem;
-    &::-webkit-scrollbar{
-        width: 2px;
-        background-color: rgb(126, 126, 126);
-    }
-    &::-webkit-scrollbar-thumb{
-        background-color: white;
-    }
+.task-ul {
+  flex-grow: 1;
+  max-height: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+  scrollbar-color: red;
+  padding-right: 0.5rem;
+  &::-webkit-scrollbar {
+    width: 2px;
+    background-color: rgb(126, 126, 126);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: white;
+  }
 }
 
 .task-li {
-    color: black;
-    background-color: #a2d8ff;
-    margin-bottom: .7rem;
-    padding: .5rem;
-    border-radius: .2rem;
-    font-size: 1.5rem;
-    font-weight: 300;
-    transition: all .2s;
-    &:hover{
-        opacity: .9;
-    }
-    &:hover .complete-button svg {
-        color: white;
-    }
+  color: black;
+  background-color: #a2d8ff;
+  margin-bottom: 0.7rem;
+  padding: 0.5rem;
+  border-radius: 0.2rem;
+  font-size: 1.5rem;
+  font-weight: 300;
+  transition: all 0.2s;
+  &:hover {
+    opacity: 0.9;
+  }
+  &:hover .complete-button svg {
+    color: white;
+  }
 }
 
 .task-li div {
-    height: 2.3rem;
-    cursor: pointer;
-    display: flex;
-    gap: 1rem;
+  height: 2.3rem;
+  cursor: pointer;
+  display: flex;
+  gap: 1rem;
 }
 
 .task-button {
-    cursor: pointer;
-    padding: 0;
-    transition: all .2s;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s;
 }
 
 .complete-button svg {
-    transition: all .2s;
-    color: rgb(0, 0, 0);
-    height: 100%;
-    &:hover {
-        color: white;
-    }
+  transition: all 0.2s;
+  color: rgb(0, 0, 0);
+  height: 100%;
+  &:hover {
+    color: white;
+  }
 }
 
 .task-title {
-    margin: 0;
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
 }
 
 .edit-button,
 .delete-button {
-    color: rgb(45, 45, 45);
-    opacity: 0;
+  color: rgb(45, 45, 45);
+  opacity: 0;
 
-    & svg {
-        height: 2rem;
-    }
+  & svg {
+    height: 2rem;
+  }
 
-    & svg:hover {
-        color: white;
-        opacity: 1;
-    }
+  & svg:hover {
+    color: white;
+    opacity: 1;
+  }
 }
-.task-edit-input{
-    border: none;
-    width: 100%;
+.task-edit-input {
+  border: none;
+  width: 100%;
 }

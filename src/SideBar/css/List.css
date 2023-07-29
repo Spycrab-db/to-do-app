@@ -1,45 +1,47 @@
 .list {
-    font-size: large;
-    padding-left: .7rem;
-    transition: all .1s;
-    &.selected{
-        background-color: #353535;
-    }
+  font-size: large;
+  padding-left: 0.7rem;
+  transition: all 0.1s;
+  &.selected {
+    background-color: #353535;
+  }
 }
 
 .list div {
-    height: 2.7rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  height: 2.7rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
 }
 
 .list:hover {
-    background-color: #484848;
+  background-color: #484848;
 }
 
 .delete-list {
-    transition: all .2s;
-    opacity: 0;
-    width: 2.3rem;
+  transition: all 0.2s;
+  opacity: 0;
+  width: 2.3rem;
+  cursor: pointer;
 }
-.input-list-li{
-    border-bottom: 1px solid;
+.input-list-li {
+  border-bottom: 1px solid;
 }
 
-.input-list{
-    width: 100%;
-    margin-top: .2rem;
-    padding: .4rem;
-    border-radius: .2rem;
-    box-sizing: border-box;
-    border: none;
+.input-list {
+  width: 100%;
+  margin-top: 0.2rem;
+  padding: 0.4rem;
+  border-radius: 0.2rem;
+  box-sizing: border-box;
+  border: none;
 }
-.error-message{
-    color: rgb(255, 160, 160);
-    margin-top: .5rem;
+.error-message {
+  color: rgb(255, 160, 160);
+  margin-top: 0.5rem;
 }
-.cancel-message{
-    font-size: small;
-    color: rgb(220, 255, 220);
+.cancel-message {
+  font-size: small;
+  color: rgb(220, 255, 220);
 }
