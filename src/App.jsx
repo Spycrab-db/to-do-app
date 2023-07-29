@@ -1,18 +1,27 @@
 import "./css/App.css";
 import TodosUI from "./TodosUI/TodosUI";
 import SideBar from "./SideBar/SideBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-// Styling
-// Connect to localStorage
+// Get localStorage data
+const tasksData = JSON.parse(localStorage.getItem("tasks"));
+const currListData = JSON.parse(localStorage.getItem("currList"));
 
 export default function App() {
   //Defines all the tasks
-  const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState(tasksData || []);
   //Defines the current list
-  const [currList, setCurrList] = useState();
+  const [currList, setCurrList] = useState(currListData);
   //Defines what is displayed on mobile
   const [displayLists, setDisplayLists] = useState(false);
+
+  //Synchronize with localStorage
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+  useEffect(() => {
+    localStorage.setItem("currList", JSON.stringify(currList));
+  }, [currList]);
 
   //Changes a title of a task by id
   function setTaskTitle(taskId, newTitle) {

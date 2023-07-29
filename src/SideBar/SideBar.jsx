@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TaskList from "../Classes/TaskList";
 import List from "./List";
 import "./css/SideBar.css";
+
+// Get localStorage data
+const listsData = JSON.parse(localStorage.getItem("lists"));
 
 export default function SideBar({
   currList,
@@ -11,9 +14,14 @@ export default function SideBar({
   setDisplayLists,
 }) {
   //Defines all the todo lists
-  const [todoLists, setTodoLists] = useState([]);
+  const [todoLists, setTodoLists] = useState(listsData || []);
   //Defines the id of the list that is onEdit
   const [currEdit, setCurrEdit] = useState();
+
+  //Synchronize with localStorage
+  useEffect(() => {
+    localStorage.setItem("lists", JSON.stringify(todoLists));
+  }, [todoLists]);
 
   function setTitle(listId, newTitle) {
     setTodoLists(

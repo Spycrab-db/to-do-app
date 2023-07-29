@@ -4,7 +4,7 @@
 
 .completed-tasks {
   overflow: auto;
-  transition: all 0.4s;
+  transition: all 0.2s;
   &.slide-out {
     height: 0;
     min-height: 0;
