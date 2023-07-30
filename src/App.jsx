@@ -20,7 +20,8 @@ export default function App() {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
   useEffect(() => {
-    localStorage.setItem("currList", JSON.stringify(currList));
+    if (currList) localStorage.setItem("currList", JSON.stringify(currList));
+    else localStorage.setItem("currList", JSON.stringify(null));
   }, [currList]);
 
   //Changes a title of a task by id

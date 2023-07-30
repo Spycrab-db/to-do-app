@@ -20,7 +20,8 @@ export default function SideBar({
 
   //Synchronize with localStorage
   useEffect(() => {
-    localStorage.setItem("lists", JSON.stringify(todoLists));
+    const data = todoLists.filter((list) => list.title);
+    localStorage.setItem("lists", JSON.stringify(data));
   }, [todoLists]);
 
   function setTitle(listId, newTitle) {
