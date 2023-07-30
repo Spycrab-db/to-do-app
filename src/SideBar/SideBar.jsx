@@ -37,7 +37,7 @@ export default function SideBar({
   }
   function deleteList(id) {
     if (currList && id === currList.id) {
-      setCurrList(undefined);
+      setCurrList(null);
     }
     setTodoLists(todoLists.filter((list) => list.id !== id));
     deleteListTasks(id);

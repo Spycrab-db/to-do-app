@@ -11,9 +11,6 @@ export default function TodosUI({
   setTitle,
   displayLists,
 }) {
-  const tasks = allTasks.filter((task) => task.parentListId === currList.id);
-  const incomplete = tasks.filter((task) => !task.completed);
-  const completed = tasks.filter((task) => task.completed);
   if (!currList) {
     return (
       <div className={`todo-ui fade-in${displayLists ? " hide" : ""}`}>
@@ -21,6 +18,9 @@ export default function TodosUI({
       </div>
     );
   }
+  const tasks = allTasks.filter((task) => task.parentListId === currList.id);
+  const incomplete = tasks.filter((task) => !task.completed);
+  const completed = tasks.filter((task) => task.completed);
   return (
     <div
       className={`todo-ui fade-in${displayLists ? " hide" : ""}`}
