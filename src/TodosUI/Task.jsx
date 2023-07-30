@@ -3,7 +3,7 @@ import EditForm from "../EditForm";
 import "./css/Task.css";
 
 export default function Task({ task, toggleComplete, deleteSelf, setTitle }) {
-  const [showControls, setShowControls] = useState(false);
+  const [hideControls, setHideControls] = useState(true);
   const [onEdit, setOnEdit] = useState(false);
   function submitTitle(title) {
     if (title) setTitle(title);
@@ -13,8 +13,8 @@ export default function Task({ task, toggleComplete, deleteSelf, setTitle }) {
   return (
     <li
       className="task-li"
-      onMouseEnter={() => setShowControls(true)}
-      onMouseLeave={() => setShowControls(false)}
+      onMouseEnter={() => setHideControls(false)}
+      onMouseLeave={() => setHideControls(true)}
     >
       {!onEdit ? (
         <div onClick={() => toggleComplete(task.id)}>
@@ -54,7 +54,7 @@ export default function Task({ task, toggleComplete, deleteSelf, setTitle }) {
           </p>
           <button
             className={`edit-button task-button${
-              showControls ? " visible" : ""
+              hideControls ? " invisible" : ""
             }`}
             onClick={(evt) => {
               evt.stopPropagation();
@@ -78,7 +78,7 @@ export default function Task({ task, toggleComplete, deleteSelf, setTitle }) {
           </button>
           <button
             className={`delete-button task-button${
-              showControls ? " visible" : ""
+              hideControls ? " invisible" : ""
             }`}
             onClick={(evt) => {
               evt.stopPropagation();

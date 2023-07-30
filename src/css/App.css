@@ -36,6 +36,10 @@ input {
   overflow: hidden;
   border-right: 1px solid;
 }
+.no-curr-list-title {
+  font-weight: 300;
+  opacity: 0.6;
+}
 .todo-ui {
   flex: 1;
   margin-right: 14rem;
@@ -66,9 +70,12 @@ input {
 .fade-in {
   animation: fade-in 0.3s;
 }
-.visible {
-  opacity: 1 !important;
+@media (hover: hover) {
+  .invisible {
+    opacity: 0 !important;
+  }
 }
+
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -91,7 +98,6 @@ input {
   .list-button {
     display: inline-block;
     align-self: baseline;
-    /* margin: 0.5rem; */
     & svg {
       width: 2rem;
     }

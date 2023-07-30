@@ -91,17 +91,16 @@ export default function App() {
           displayLists={displayLists}
           setDisplayLists={setDisplayLists}
         />
-        {currList && (
-          <TodosUI
-            currList={currList}
-            addTask={(task) => setTasks([...tasks, task])}
-            allTasks={tasks}
-            toggleComplete={toggleComplete}
-            deleteTask={deleteTask}
-            setTitle={setTaskTitle}
-            displayLists={displayLists}
-          />
-        )}
+
+        <TodosUI
+          currList={currList}
+          addTask={(task) => setTasks([...tasks, task])}
+          allTasks={tasks}
+          toggleComplete={toggleComplete}
+          deleteTask={deleteTask}
+          setTitle={setTaskTitle}
+          displayLists={displayLists}
+        />
       </div>
     </>
   );

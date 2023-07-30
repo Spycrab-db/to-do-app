@@ -25,7 +25,6 @@
 
 .delete-list {
   transition: all 0.2s;
-  opacity: 0;
   width: 2.3rem;
   cursor: pointer;
 }

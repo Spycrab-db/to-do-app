@@ -65,7 +65,6 @@
 .edit-button,
 .delete-button {
   color: rgb(45, 45, 45);
-  opacity: 0;
 
   & svg {
     height: 2rem;

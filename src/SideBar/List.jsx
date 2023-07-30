@@ -13,7 +13,7 @@ export default function List({
   className,
 }) {
   const [error, setError] = useState();
-  const [showDelete, setShowDelete] = useState(false);
+  const [hideDelete, setHideDelete] = useState(true);
   function submitTitle(title) {
     if (!title) {
       if (children) {
@@ -65,12 +65,12 @@ export default function List({
       <div
         onClick={setToCurrList}
         onDoubleClick={() => setEdit(true)}
-        onMouseEnter={() => setShowDelete(true)}
-        onMouseLeave={() => setShowDelete(false)}
+        onMouseEnter={() => setHideDelete(false)}
+        onMouseLeave={() => setHideDelete(true)}
       >
         <p>{children}</p>
         <button
-          className={`delete-list${showDelete ? " visible" : ""}`}
+          className={`delete-list${hideDelete ? " invisible" : ""}`}
           onClick={(evt) => {
             evt.stopPropagation();
             deleteSelf();
