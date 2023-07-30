@@ -60,6 +60,10 @@ export default function List({
       </>
     );
   }
+  if (!children) {
+    deleteSelf();
+    return;
+  }
   return (
     <li className={`list ${className}`}>
       <div
